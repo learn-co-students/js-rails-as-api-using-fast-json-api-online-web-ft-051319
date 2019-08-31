@@ -9,6 +9,12 @@ class SightingsController < ApplicationController
     options = {
       include: [:bird, :location]
     }
+    # can also write like this
+    # options = {}
+    # options[:include] = [:bird, :location]
+    # render json: SightingSerializer.new(sightings, options).serializable_hash
+    # don't need to call serializable_hash since rails implicitly calls .to_json
+
     render json: SightingSerializer.new(sighting, options)
   end
 end
